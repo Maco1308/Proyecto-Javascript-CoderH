@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de Ensayo y Pesca - Proyecto Final</title>
+    <link rel="stylesheet" href="diseño.css">
+    
+</head>
+<body>
+    <h1 id="nomBienvenida">Bienvenido</h1>
+    
+    <h2>Inventario de herramientas de Ensayo y Pesca - Control y seguimiento </h2>
+    <h3>Ingrese los datos de la herramienta a ingresar: </h3>
+
+    <div id="containerPrincipal">
+        <div>
+            <form id="nuevaHerramienta">
+                <label>Nombre de herramienta: </label>
+                <input class="iText" type="text" name="nombreHerramienta" id="iNombre">
+
+                <label>Categoria de herramienta: </label>
+                <input class="iText" type="text" name="categoriaHerramienta" id="iCategoria">
+
+                <label>Costo de herramienta: </label>
+                <input class="iText" type="text" name="costoHerramienta" id="iCosto">
+
+                <div id="botones">
+                    <input type="submit" id="btnSubmit" value="Confirmar">
+                    <input type="button" id="btnMostrar" value="Mostrar todas">
+
+                </div>
+
+            </form>
+
+        <div id="herramientaIngresada">
+
+        </div>
+    </div>
+    <div id="displayTodos">
+
+    </div>
+</div>
+
+<script src="main.js"></script>
+<script src="storange&json.js"></script>   
+</body>
+</html>
