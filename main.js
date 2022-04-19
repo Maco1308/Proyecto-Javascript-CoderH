@@ -9,7 +9,7 @@ class Herramienta {
 }
 
 let nombrePersona = prompt('Ingrese su nombre');    
-document.querySelector("#nomBienvenida").textContent = "Bienvenido " + nombrePersona;
+
 let arrayHerramientas = [];
 let minuevaHerramienta = document.querySelector("#nuevaHerramienta");
 let inputNombre = document.querySelector("#iNombre");
@@ -118,5 +118,11 @@ cate.addEventListener("input", () => {
 costo.addEventListener("input", () => {
     console.log("Datos ingresados en costo");
 })
+
+document.querySelector("#nomBienvenida").textContent = "Bienvenido " + nombrePersona;
+
+// Storange //
+
+localStorage.setItem('Nombre_persona', nombrePersona);
 
 
