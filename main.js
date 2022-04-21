@@ -8,6 +8,18 @@ class Herramienta {
     }
 }
 
+const datosCia = {
+    empresa : "servicios especiales SA",
+    direccion : "calle falsa 123",
+    telefono : "123456789",
+    correo : "xxxxx@xxxx",
+    pagina : "www.xxxx.com"
+
+}
+let empresa = datosCia.empresa;
+let direccion = datosCia.direccion;
+let telefono = datosCia.telefono;
+
 let nombrePersona = prompt('Ingrese su nombre');    
 
 let arrayHerramientas = [];
@@ -18,6 +30,7 @@ let nombreIngresado = nuevaHerramienta.children[1].value;
 let categoriaIngresado = nuevaHerramienta.children[3].value;
 let costoIngresado = nuevaHerramienta.children[5].value;
 
+let displayCia = document.querySelector("#displayCia");
 let contenedor = document.querySelector("#herramientaIngresada");
 let displayTodos = document.querySelector("#displayTodos");
 let parrafos = displayTodos.getElementsByTagName("p");
@@ -36,7 +49,10 @@ function validarIngreso() {
     console.log(categoriaIngresado);
     console.log(costoIngresado);
 
-    if (nombreIngresado == '' || categoriaIngresado =='' || costoIngresado == ''){
+    const verificacion=(nombreIngresado == '' || categoriaIngresado =='' || costoIngresado == '') ? bandera=false : bandera=true;
+    verificacion ? alert('Todos los campos estan completados') : alert('Faltan campos por completar');
+
+  /* if (nombreIngresado == '' || categoriaIngresado =='' || costoIngresado == ''){
         alert('Debe completar todos los campos');
         inputNombre.focus();
         bandera = false;
@@ -44,8 +60,9 @@ function validarIngreso() {
     }
     else {
         bandera = true
-    }
+    }*/
 }
+
 
 
 
@@ -87,7 +104,7 @@ function añadirDom(){
 function MostrarTodasHerramientas(e) {
     e.preventDefault();
     let i=0;
-    displayTodos.innerHTML = '<h4> Listado de todas las herramientas: </h4>';
+    displayTodos.innerHTML = '<h4> Listado de todas las herramientas: </h4>';   
     for (const herramienta of arrayHerramientas) {
         displayTodos.innerHTML += `
         <div id="${herramienta.nombre}" class="algunaClaseCSS">
@@ -99,8 +116,16 @@ function MostrarTodasHerramientas(e) {
         <hr>
         `
     }
-
+    console.log(...arrayHerramientas);
+    localStorage.setItem('arrayHerramientas', JSON.stringify(arrayHerramientas));
 }
+
+displayCia.innerHTML = `<h3> Nombre de la empresa:</h3>`;	
+displayCia.innerHTML += `<p><strong>Empresa: </strong> ${empresa}</p>
+<p><strong>Direccion: </strong> ${direccion}</p>
+<p><strong>Telefono: </strong> ${telefono}</p>`;
+
+
 
 // Eventos //
 
@@ -121,7 +146,7 @@ costo.addEventListener("input", () => {
 
 document.querySelector("#nomBienvenida").textContent = "Bienvenido " + nombrePersona;
 
-// Storange //
+// Storage //
 
 localStorage.setItem('Nombre_persona', nombrePersona);
 
