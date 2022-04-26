@@ -1,0 +1,41 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Jost, sans-serif;
+    color: rgb(251, 251, 251);
+}
+  
+
+body{
+    background-image: url(img/ayv1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+header h1{
+    color: #fff;
+    font-size: 75px;
+    text-align: center;
+    padding: 20px;
+    text-shadow: 2px 2px 2px #000;
+}
+.btnHtml{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 20px;
+    width: 100%;
+}
+.formText{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+label{
+    font-size: 20px;
+    color: rgb(220, 219, 219);
+    text-shadow: 2px 2px 2px #000;
+}
+input{
+    background-color: #000;
+}

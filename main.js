@@ -20,7 +20,14 @@ let empresa = datosCia.empresa;
 let direccion = datosCia.direccion;
 let telefono = datosCia.telefono;
 
-let nombrePersona = prompt('Ingrese su nombre');    
+let nombrePersona = 
+    prompt('Ingrese su nombre');{
+    
+    Swal.fire({
+        title: 'Hola ' + nombrePersona,
+        text: 'Bienvenido a la pagina de ' + empresa,
+    })
+}    
 
 let arrayHerramientas = [];
 let minuevaHerramienta = document.querySelector("#nuevaHerramienta");
@@ -50,27 +57,30 @@ function validarIngreso() {
     console.log(costoIngresado);
 
     const verificacion=(nombreIngresado == '' || categoriaIngresado =='' || costoIngresado == '') ? bandera=false : bandera=true;
-    verificacion ? alert('Todos los campos estan completados') : alert('Faltan campos por completar');
+    verificacion ? Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Herramienta ingresada correctamente',
+        showConfirmButton: false,
+        timer: 10000
+      }) : Swal.fire({
+        position: 'top-end',
+        icon: 'warning',
+        title: 'Faltan campos por completar',
+        showConfirmButton: false,
+        timer: 10000
+      });
 
-  /* if (nombreIngresado == '' || categoriaIngresado =='' || costoIngresado == ''){
-        alert('Debe completar todos los campos');
-        inputNombre.focus();
-        bandera = false;
-
-    }
-    else {
-        bandera = true
-    }*/
 }
-
-
 
 
 function agregarHerramienta(e){
     e.preventDefault();
     validarIngreso();
     if (bandera == true) {
-        let opcion = confirm("¿Comfirma que desea añadir la herramienta?");
+        let opcion = confirm('¿Desea agregar esta herramienta?');
+
+        
         if (opcion == true){
             let formulario = e.target
             arrayHerramientas.push(new Herramienta(nombreIngresado, categoriaIngresado, costoIngresado));
