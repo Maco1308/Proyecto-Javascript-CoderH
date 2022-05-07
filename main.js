@@ -1,4 +1,20 @@
 
+const lista = document.querySelector('#listado');
+
+fetch('/data.json')
+    .then((response) => response.json())
+    .then((data) => {
+
+        data.forEach((herramienta) => {
+            const li = document.createElement('li')
+            li.innerHTML = `<h4>${herramienta.nombre}</h4>
+            <p>${herramienta.categoria}</p>
+            <p>${herramienta.precio}</p> 
+            <hr/>`
+            lista.append(li)
+        })      
+})
+
 class Herramienta {
     constructor (nombre,categoria,costo){
         this.nombre = nombre;
@@ -9,7 +25,7 @@ class Herramienta {
 }
 
 const datosCia = {
-    empresa : "servicios especiales SA",
+    empresa : "Servicios Especiales SA",
     direccion : "calle falsa 123",
     telefono : "123456789",
     correo : "xxxxx@xxxx",
@@ -26,6 +42,7 @@ let nombrePersona =
     Swal.fire({
         title: 'Hola ' + nombrePersona,
         text: 'Bienvenido a la pagina de ' + empresa,
+
     })
 }    
 
@@ -121,14 +138,34 @@ function MostrarTodasHerramientas(e) {
         <p><strong> Nombre: </strong> ${herramienta.nombre}</p>
         <p><strong> Categoria: </strong> ${herramienta.categoria}</p>
         <p><strong> Costo: </strong> ${herramienta.costo}</p>
-        <button id="${herramienta.nombre}Eliminar">Eliminar herramienta</button>
+        <button class="btn btn-secondary btn-lg" id="${herramienta.nombre}Eliminar">Eliminar herramienta</button>
         </div>
         <hr>
         `
+        let botonEliminar = document.querySelector(`#${herramienta.nombre}Eliminar`);
+        botonEliminar.addEventListener('click', eliminarHerramienta);
+        
+        
     }
     console.log(...arrayHerramientas);
     localStorage.setItem('arrayHerramientas', JSON.stringify(arrayHerramientas));
 }
+
+let eliminarHerramienta = (e) => {
+    let opcion = confirm('¿Desea eliminar esta herramienta?');
+    if (opcion == true){
+        let herramientaEliminar = e.target.id;
+        let herramientaEliminarIndex = arrayHerramientas.findIndex(herramienta => herramienta.nombre == herramientaEliminar);
+        arrayHerramientas.splice(herramientaEliminarIndex, 1);
+        localStorage.setItem('arrayHerramientas', JSON.stringify(arrayHerramientas));
+        MostrarTodasHerramientas();
+    }
+    else{
+        alert ('No se eliminara la herramienta');
+
+    }
+}
+
 
 displayCia.innerHTML = `<h3> Nombre de la empresa:</h3>`;	
 displayCia.innerHTML += `<p><strong>Empresa: </strong> ${empresa}</p>

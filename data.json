@@ -1,0 +1,6 @@
+
+[ 
+    { "nombre": "Bomba de Lodo", "precio": 4000 , "categoria": "Rotacion" },
+    { "nombre": "Cuña de Seguridad", "precio": 3000 , "categoria": "Perforacion" },
+    { "nombre": "Zaranda", "precio": 7000 , "categoria": "Estimulacion" }
+]
